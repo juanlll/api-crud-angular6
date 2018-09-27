@@ -20,9 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-
-
-
 Route::get('record/{id}',function($id){
 	$record = App\Record::findOrFail($id);
 	return json_encode(["record"=>$record,"message"=>"Record consultado con id = {$id}"]);
@@ -48,7 +45,7 @@ Route::post('rec',function(Request $request){
 	$record->humidity = $request->input('humidity');
 	$record->co2 = $request->input('co2');
 	$record->save();
-	return json_encode(["record"=>$record,"message"=>"Registrado correctamente!"]);
+	return json_encode($record);
 });
 
 
